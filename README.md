@@ -7,11 +7,26 @@ Create a virtual environment using [miniconda](https://docs.conda.io/en/main/min
 ```bash
 conda create -y -n pandera-nyhackr python=3.10
 conda activate pandera-nyhackr
-conda install -y -c conda-forge pandera r-base r-essentials r-reticulate radian
+conda install -y -c conda-forge \
+    pandera \
+    pandera-strategies \
+    r-base \
+    r-essentials \
+    r-reticulate
 ```
 
-## Run
+## Usage
+
+Run the `simple.R` script:
 
 ```bash
 Rscript src/simple.R
 ```
+
+Render the `simple.Rmd` markdown file:
+
+```bash
+R -e 'rmarkdown::render("src/simple.Rmd", "html_document", output_dir = "..")'
+```
+
+This will produce a file called `simple.html` in the root of your repo.
