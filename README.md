@@ -26,7 +26,7 @@ Rscript src/simple.R
 Render the `simple.Rmd` markdown file:
 
 ```bash
-R -e 'rmarkdown::render("src/simple.Rmd", "html_document", output_dir = "..")'
+R -e 'rmarkdown::render("src/simple.Rmd", "html_document", output_dir = ".")'
 ```
 
 This will produce a file called `simple.html` in the root of your repo.

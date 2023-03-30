@@ -2,21 +2,24 @@
 title: "Validating R DataFrames with Pandera via `reticulate`"
 author: Niels Bantilan
 date: March 30, 2023
-output: slidy_presentation
+format:
+  revealjs:
+    slide-number: true
+    footer: <https://www.union.ai/pandera>
 ---
 
-#### A highly unnecessary but interesting case study in R-Python interoperability
+# Pandera in Quarto
 
-```{r setup, include=FALSE}
+```r
 library(reticulate)
 library(dplyr)
 
 use_condaenv("pandera-nyhackr")
 ```
 
-## Define a Pandera Schema
+# Define a Pandera Schema
 
-```{python}
+```python
 import numpy as np
 import pandas as pd
 import pandera as pa
@@ -34,18 +37,18 @@ python_data = pd.DataFrame.from_records([
 ])
 ```
 
-## Define some R data
+# Define some R data
 
-```{r}
+```r
 r_data <- data.frame(
     item = c("apple", "orange", "orange"),
     price = c(0.5, 0.75, NaN)
 )
 ```
 
-## Validate Python and R Data
+# Validate Python and R Data
 
-```{r}
+```r
 # validate the python data
 print(py$Schema$validate(py$python_data))
 
@@ -53,8 +56,8 @@ print(py$Schema$validate(py$python_data))
 print(py$Schema$validate(r_data))
 ```
 
-## Synthesize Test Data with Pandera
+# Synthesize Test Data with Pandera
 
-```{r}
+```r
 print(py$Schema$example(size = as.integer(5)))
 ```
